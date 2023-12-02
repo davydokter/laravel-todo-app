@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create('to_dos', function (Blueprint $table) {
             $table->id();
 
             $table->string('title');
             $table->string('description');
 
-            $table->boolean('completed')->default(false);
+            $table->boolean('is_completed')->default(false);
             $table->timestamp('due_date');
 
             $table->timestamps();

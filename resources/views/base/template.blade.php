@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <main id="content">
+    <main id="content" class="bg-gray-300 h-screen w-full">
         @yield('content')
     </main>
 </body>
