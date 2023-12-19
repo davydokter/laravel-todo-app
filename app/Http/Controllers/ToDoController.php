@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreToDoRequest;
+use App\Http\Requests\UpdateToDoRequest;
 use App\Models\ToDo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -34,5 +35,28 @@ class ToDoController extends Controller
         ]);
 
         return redirect(route('todo.show'))->with('status', $validated);
+    }
+
+    public function update(UpdateToDoRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        abort_if(!isset($validated['todo-id']), '500');
+
+        $toDo = ToDo::findOrFail($validated['todo-id']);
+
+        if (isset($validated['completed']) && $validated['completed'] === 'on') {
+            $toDo->update([
+                'is_completed' => true
+            ]);
+
+            return redirect(route('todo.show'));
+        } else {
+            $toDo->update([
+                'is_completed' => false
+            ]);
+
+            return redirect(route('todo.show'));
+        };
     }
 }
