@@ -8,11 +8,11 @@
 
     <title>{{ config('app.name') }}</title>
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <main id="content" class="bg-gray-300 h-screen w-full">
+    <main id="content" class="w-full h-screen bg-gray-300">
         @yield('content')
     </main>
 </body>
