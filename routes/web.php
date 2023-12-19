@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::patch('/todo', [ToDoController::class, 'update'])->name('todo.update');
 Route::post('/todo', [ToDoController::class, 'store'])->name('todo.store');
 Route::get('/todo/create', [ToDoController::class, 'create'])->name('todo.create');
-Route::get('/todo', [ToDoController::class, 'show'])->name('todo.show');
+Route::get('/', [ToDoController::class, 'show'])->name('todo.show');
